@@ -10,6 +10,15 @@ import UIKit
 import MaterialComponents.MaterialCards
 import Kingfisher
 
+extension UIViewController{
+    func setupColor(){
+        self.navigationController?.navigationBar.barTintColor = UIColor.orange
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes            = [NSAttributedStringKey.foregroundColor: UIColor.white];
+    }
+    
+}
+
 class MoviesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var movies:[Movie] = []
@@ -17,6 +26,7 @@ class MoviesViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupColor()
         self.collectionViewMovies.delegate = self
         self.collectionViewMovies.dataSource = self
         
@@ -38,8 +48,22 @@ class MoviesViewController: UIViewController, UICollectionViewDelegate, UICollec
         return self.movies.count
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+        if segue.identifier == "MoviesListToDetailsWith" {
+            if let movie = sender as? Movie{
+                if let movieDetailsViewController = segue.destination as? MovieDetailsViewController{
+                    movieDetailsViewController.movie = movie;
+                }
+            }
+        }
+
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let movieToDetails = self.movies[indexPath.row]
+        self.performSegue(withIdentifier: "MoviesListToDetailsWith" , sender: movieToDetails);
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -76,7 +100,7 @@ class MoviesViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     // Para deixar a collection view com apenas duas columas
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let padding: CGFloat =  50
+        let padding: CGFloat =  60
         let collectionViewSize = collectionView.frame.size.width - padding
         
         return CGSize(width: collectionViewSize/2, height: collectionViewSize/2)

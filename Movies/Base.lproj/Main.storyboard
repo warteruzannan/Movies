@@ -8,6 +8,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeueExtras.ttc">
+            <string>HelveticaNeue-CondensedBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Movies-->
         <scene sceneID="tne-QT-ifu">
@@ -18,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xvz-cC-JBD">
-                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <rect key="frame" x="16" y="136" width="343" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s0F-VA-mfO">
                                     <size key="itemSize" width="50" height="50"/>
@@ -47,24 +52,78 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xvz-cC-JBD" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="10Q-G8-whI"/>
+                            <constraint firstItem="xvz-cC-JBD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="2pb-wy-NAg"/>
                             <constraint firstItem="Xjq-Sh-Kfp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="79N-4c-9E0"/>
-                            <constraint firstItem="xvz-cC-JBD" firstAttribute="top" secondItem="Xjq-Sh-Kfp" secondAttribute="bottom" id="GLf-b8-B5A"/>
+                            <constraint firstItem="xvz-cC-JBD" firstAttribute="top" secondItem="Xjq-Sh-Kfp" secondAttribute="bottom" constant="16" id="8lf-mj-ytz"/>
+                            <constraint firstItem="xvz-cC-JBD" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="A9u-tS-slf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xvz-cC-JBD" secondAttribute="trailing" constant="16" id="Beh-bB-3cc"/>
                             <constraint firstItem="Xjq-Sh-Kfp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VeW-TE-2dW"/>
-                            <constraint firstItem="xvz-cC-JBD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Wae-1z-bV5"/>
                             <constraint firstItem="Xjq-Sh-Kfp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XUu-5a-WA2"/>
-                            <constraint firstItem="xvz-cC-JBD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qTa-iF-vM0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="O2w-b3-Gv5"/>
                     <connections>
                         <outlet property="collectionViewMovies" destination="xvz-cC-JBD" id="6FL-zL-7GS"/>
+                        <segue destination="f8G-8m-df4" kind="show" identifier="MoviesListToDetailsWith" id="9Z2-JW-O9j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="984.79999999999995" y="29.23538230884558"/>
+        </scene>
+        <!--Details-->
+        <scene sceneID="q6q-58-fAl">
+            <objects>
+                <viewController title="Details" id="f8G-8m-df4" customClass="MovieDetailsViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sKm-1I-opR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hI-Es-mnr">
+                                <rect key="frame" x="0.0" y="64" width="375" height="303"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="303" id="8mu-LW-skz"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FAB-P2-97U">
+                                <rect key="frame" x="0.0" y="64" width="375" height="303"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="303" id="VMd-gk-6mz"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Description" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="39p-0g-dyo">
+                                <rect key="frame" x="16" y="375" width="343" height="163"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FAB-P2-97U" firstAttribute="top" secondItem="g2W-H1-DBX" secondAttribute="top" id="1i0-Of-DXU"/>
+                            <constraint firstItem="5hI-Es-mnr" firstAttribute="leading" secondItem="g2W-H1-DBX" secondAttribute="leading" id="GPE-6e-rqp"/>
+                            <constraint firstItem="5hI-Es-mnr" firstAttribute="trailing" secondItem="g2W-H1-DBX" secondAttribute="trailing" id="LJe-bm-BcB"/>
+                            <constraint firstItem="FAB-P2-97U" firstAttribute="trailing" secondItem="g2W-H1-DBX" secondAttribute="trailing" id="dX5-yb-INK"/>
+                            <constraint firstItem="5hI-Es-mnr" firstAttribute="top" secondItem="g2W-H1-DBX" secondAttribute="top" id="eEj-lX-lQ4"/>
+                            <constraint firstItem="g2W-H1-DBX" firstAttribute="bottom" secondItem="39p-0g-dyo" secondAttribute="bottom" constant="129" id="fvi-s4-UEa"/>
+                            <constraint firstItem="39p-0g-dyo" firstAttribute="top" secondItem="FAB-P2-97U" secondAttribute="bottom" constant="8" id="gFc-ML-5dv"/>
+                            <constraint firstItem="39p-0g-dyo" firstAttribute="leading" secondItem="g2W-H1-DBX" secondAttribute="leading" constant="16" id="iQ0-CW-s0y"/>
+                            <constraint firstItem="FAB-P2-97U" firstAttribute="leading" secondItem="g2W-H1-DBX" secondAttribute="leading" id="rJE-Iu-GlX"/>
+                            <constraint firstItem="g2W-H1-DBX" firstAttribute="trailing" secondItem="39p-0g-dyo" secondAttribute="trailing" constant="16" id="v5x-np-HPM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="g2W-H1-DBX"/>
+                    </view>
+                    <connections>
+                        <outlet property="movieBannerImage" destination="FAB-P2-97U" id="16I-iG-b34"/>
+                        <outlet property="movieDescriptionText" destination="39p-0g-dyo" id="vm8-h9-c2g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iHZ-kr-sbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1864.8" y="28.335832083958024"/>
         </scene>
         <!--Movies-->
         <scene sceneID="VlJ-gS-6h1">
