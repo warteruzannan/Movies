@@ -6,7 +6,9 @@ target 'Movies' do
   use_frameworks!
   pod 'MaterialComponents/Cards'
   pod 'Kingfisher', '~> 4.0.1'
-  pod 'Alamofire', '~> 4.0'  
+  pod 'Alamofire', '~> 4.0' 
+  #pod 'RxSwift', '3.0'
+  #pod 'AlamofireObjectMapper', '~> 4.0' 
   # Pods for Movies
   
   target 'MoviesTests' do

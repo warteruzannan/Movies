@@ -16,7 +16,7 @@ protocol MoviesUIProtocol {
 
 class MoviesViewController: UIViewController, MoviesUIProtocol, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var movies:[Movie] = [Movie(title:"A Cabana"), Movie(title:"Piratas do Caribe")]
+    var movies:[Movie] = []
     @IBOutlet weak var collectionViewMovies: UICollectionView!
     
     override func viewDidLoad() {
@@ -25,7 +25,12 @@ class MoviesViewController: UIViewController, MoviesUIProtocol, UICollectionView
         self.collectionViewMovies.dataSource = self
         
         self.collectionViewMovies.register(MDCCardCollectionCell.self, forCellWithReuseIdentifier: "MovieViewCell")
-        MovieInteractor.fetchMovies()
+        
+        MovieInteractor.fetchMovies{ (movies:[Movie]) in
+            self.movies = movies
+            self.collectionViewMovies.reloadData()
+        }
+
      
     }
     
@@ -49,8 +54,9 @@ class MoviesViewController: UIViewController, MoviesUIProtocol, UICollectionView
         cell.setShadowColor(UIColor.black, for: .highlighted)
         
         //let imageView = UIImageView()
+        let movie = self.movies[indexPath.row]
         let imageView = UIImageView(frame: cell.contentView.frame)
-        let url = URL(string: "https://image.tmdb.org/t/p/w200/uC6TTUhPpQCmgldGyYveKRAu8JN.jpg")
+        let url = URL(string: movie.poster_url!)
         imageView.kf.setImage(with: url)
         imageView.layer.cornerRadius = 8
         imageView.layer.masksToBounds = true

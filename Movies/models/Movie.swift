@@ -19,13 +19,22 @@
 //},
 
 import Foundation
-//import ObjectMapper
 
 class Movie {
+    var id: String?
+    var vote_average: Double?
     var title:String?
+    var genres: [Any]?
+    var poster_url: String?
+    var release_date: String?
     
-    init(title:String?){
-        self.title = title
+    init (valueAny:[String:Any]?){
+        self.id             = valueAny!["id"] as? String
+        self.vote_average   = valueAny!["id"] as? Double
+        self.title          = valueAny!["title"] as? String
+        self.genres         = valueAny!["genres"] as? [Any]
+        self.poster_url     = valueAny!["poster_url"] as? String
+        self.release_date   = valueAny!["release_date"] as? String
     }
 }
 

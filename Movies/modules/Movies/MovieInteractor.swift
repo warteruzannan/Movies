@@ -10,13 +10,14 @@ import Foundation
 import Alamofire
 
 class MovieInteractor {
-    static func fetchMovies(){
+    
+    static func fetchMovies(_ success: @escaping (_ result: [Movie]) -> Void){
         Alamofire.request("https://desafio-mobile.nyc3.digitaloceanspaces.com/movies").responseJSON { response in
-            if let json = response.result.value as? [String:AnyObject] {
-                print("JSON: \(json)")
+            
+            if let json = response.result.value as? NSArray{
+                let movies = json.map({ (v) -> Movie in return Movie(valueAny: v as? [String:Any])})
+                success(movies)
             }
-        }
- 
-        
+         }
     }
 }
