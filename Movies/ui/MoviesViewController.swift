@@ -10,11 +10,7 @@ import UIKit
 import MaterialComponents.MaterialCards
 import Kingfisher
 
-protocol MoviesUIProtocol {
-    func showMovies(movies: [Movie])
-}
-
-class MoviesViewController: UIViewController, MoviesUIProtocol, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MoviesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var movies:[Movie] = []
     @IBOutlet weak var collectionViewMovies: UICollectionView!
@@ -42,19 +38,33 @@ class MoviesViewController: UIViewController, MoviesUIProtocol, UICollectionView
         return self.movies.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieViewCell", for: indexPath) as! MDCCardCollectionCell
    
     
+        self.setupCell(cell: cell, indexPath: indexPath)
+        
+        return cell
+        
+    }
+    
+    
+    // Cofigura os daos da cell
+    func setupCell(cell:MDCCardCollectionCell, indexPath: IndexPath){
+       
+        let movie = self.movies[indexPath.row]
+        
         cell.isSelectable = true
-
         cell.cornerRadius = 8
         cell.setShadowElevation(ShadowElevation(rawValue: 6), for: .selected)
         cell.setShadowColor(UIColor.black, for: .highlighted)
         
-        //let imageView = UIImageView()
-        let movie = self.movies[indexPath.row]
+        
         let imageView = UIImageView(frame: cell.contentView.frame)
         let url = URL(string: movie.poster_url!)
         imageView.kf.setImage(with: url)
@@ -62,21 +72,13 @@ class MoviesViewController: UIViewController, MoviesUIProtocol, UICollectionView
         imageView.layer.masksToBounds = true
         
         cell.contentView.addSubview(imageView)
-        
-        return cell
-        
     }
     
+    // Para deixar a collection view com apenas duas columas
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let padding: CGFloat =  50
         let collectionViewSize = collectionView.frame.size.width - padding
         
         return CGSize(width: collectionViewSize/2, height: collectionViewSize/2)
-    }
-    
-
-    func showMovies(movies: [Movie]) {
-        self.movies = movies
-        self.collectionViewMovies.reloadData()
     }
 }
