@@ -10,9 +10,9 @@ import Foundation
 import Alamofire
 
 class MoviesServiceHTTP {
-    
+    static var URL_ENDPOINT = "https://desafio-mobile.nyc3.digitaloceanspaces.com/movies"
     static func fetchMovies(_ success: @escaping (_ err:Any?,_ result: [Movie]) -> Void){
-        Alamofire.request("https://desafio-mobile.nyc3.digitaloceanspaces.com/movies").responseJSON { response in
+        Alamofire.request(MoviesServiceHTTP.URL_ENDPOINT).responseJSON { response in
             switch response.result {
             case .success:
                 if let json = response.result.value as? NSArray{
