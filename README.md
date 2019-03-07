@@ -27,3 +27,4 @@ Para executar os testes você pode utilizar o seguinte comando
 * Kingerfish para fazer cache das imagens 
 * Material Components/MaterialCards para os cards das imagens
 * Há três testes automatizados, por enquanto só..
+* Voldemort é o nome do meu usuário (hehe) não se assustem...
