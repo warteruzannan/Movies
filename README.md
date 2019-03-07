@@ -18,3 +18,11 @@ Swift 4.1
 3. Abra o terminal e execute `pod install` 
 4. Com o xcode, abra o araquivo `Movies.xcworkspace`
 5. Escolha o emulador e clique em Run
+
+
+## Informações
+
+* Projeto criado utilizando MVC
+* Alamofire para fazer requisições REST
+* Kingerfish para fazer cache das imagens 
+* Material Components/MaterialCards para os cards das imagens
