@@ -12,7 +12,7 @@ import Kingfisher
 
 extension UIViewController{
     func setupColor(){
-        self.navigationController?.navigationBar.barTintColor = UIColor.orange
+        self.navigationController?.navigationBar.barTintColor = UIColor.brown
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes            = [NSAttributedStringKey.foregroundColor: UIColor.white];
     }
@@ -21,9 +21,12 @@ extension UIViewController{
 
 class MoviesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var messagesIndicatorLabel: UILabel!
     var movies:[Movie] = []
     @IBOutlet weak var collectionViewMovies: UICollectionView!
     
+    @IBOutlet weak var loadMoviesIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var tryAgainButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColor()
@@ -31,19 +34,42 @@ class MoviesViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.collectionViewMovies.dataSource = self
         
         self.collectionViewMovies.register(MDCCardCollectionCell.self, forCellWithReuseIdentifier: "MovieViewCell")
+        self.collectionViewMovies.alpha = 0
+        self.loadMoviesFromService("")
         
-        MovieInteractor.fetchMovies{ (movies:[Movie]) in
-            self.movies = movies
-            self.collectionViewMovies.reloadData()
-        }
-
-     
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    func showLoadMovies(){
+        self.messagesIndicatorLabel.text = "Carregando filmes..."
+        self.loadMoviesIndicator.alpha = 1
+        self.tryAgainButton.alpha = 0
+        self.tryAgainButton.isEnabled = false
+    }
+    
+    func showLoadError(){
+        self.messagesIndicatorLabel.text = "Ops! Há algo errado."
+        self.tryAgainButton.alpha = 1
+        self.tryAgainButton.isEnabled = true
+        self.loadMoviesIndicator.alpha = 0
+    }
+    
+    @IBAction func loadMoviesFromService(_ sender: Any) {
+        self.showLoadMovies()
+        MoviesServiceHTTP.fetchMovies{ (err:Any?,movies:[Movie]) in
+            if err == nil{
+                self.movies = movies
+                self.collectionViewMovies.reloadData()
+                self.collectionViewMovies.alpha = 1
+                
+            }else{
+                self.showLoadError()
+            }
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.movies.count
     }

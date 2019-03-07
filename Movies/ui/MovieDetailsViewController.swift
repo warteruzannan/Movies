@@ -28,6 +28,7 @@ class MovieDetailsViewController: UIViewController {
         movieBannerImage.layer.cornerRadius = 8
         movieBannerImage.layer.masksToBounds = true
         
+        //self.navigationController?.navigationBar.topItem?.title = movie.title!
         self.movieDescriptionText.text = movie.movieToString()
     }
 
