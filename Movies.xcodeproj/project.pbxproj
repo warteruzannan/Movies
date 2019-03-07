@@ -13,6 +13,7 @@
 		3983C7CC2230A8B2008F668E /* MoviesServiceHTTPTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3983C7CB2230A8B2008F668E /* MoviesServiceHTTPTest.swift */; };
 		3983C7CE2230AEDD008F668E /* MoviesModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3983C7CD2230AEDD008F668E /* MoviesModelTest.swift */; };
 		3983C7D02230B4F1008F668E /* NoExistsEndPointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3983C7CF2230B4F1008F668E /* NoExistsEndPointTest.swift */; };
+		3983C7D22230B688008F668E /* SetColorsBarExtensionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3983C7D12230B688008F668E /* SetColorsBarExtensionTest.swift */; };
 		398DF1C7222FE32D007F62E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398DF1C6222FE32D007F62E0 /* AppDelegate.swift */; };
 		398DF1CC222FE32D007F62E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 398DF1CA222FE32D007F62E0 /* Main.storyboard */; };
 		398DF1CF222FE32D007F62E0 /* Movies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 398DF1CD222FE32D007F62E0 /* Movies.xcdatamodeld */; };
@@ -40,6 +41,7 @@
 		3983C7CB2230A8B2008F668E /* MoviesServiceHTTPTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesServiceHTTPTest.swift; sourceTree = "<group>"; };
 		3983C7CD2230AEDD008F668E /* MoviesModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModelTest.swift; sourceTree = "<group>"; };
 		3983C7CF2230B4F1008F668E /* NoExistsEndPointTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoExistsEndPointTest.swift; sourceTree = "<group>"; };
+		3983C7D12230B688008F668E /* SetColorsBarExtensionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetColorsBarExtensionTest.swift; sourceTree = "<group>"; };
 		398DF1C3222FE32D007F62E0 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		398DF1C6222FE32D007F62E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		398DF1CB222FE32D007F62E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				398DF1E0222FE32E007F62E0 /* Info.plist */,
 				3983C7CD2230AEDD008F668E /* MoviesModelTest.swift */,
 				3983C7CF2230B4F1008F668E /* NoExistsEndPointTest.swift */,
+				3983C7D12230B688008F668E /* SetColorsBarExtensionTest.swift */,
 			);
 			path = MoviesTests;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			files = (
 				3983C7CE2230AEDD008F668E /* MoviesModelTest.swift in Sources */,
 				3983C7CC2230A8B2008F668E /* MoviesServiceHTTPTest.swift in Sources */,
+				3983C7D22230B688008F668E /* SetColorsBarExtensionTest.swift in Sources */,
 				3983C7D02230B4F1008F668E /* NoExistsEndPointTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
