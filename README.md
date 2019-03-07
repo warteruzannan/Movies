@@ -8,7 +8,7 @@
 * Swift 4.1
 
 ## Testes 
-Para executar os testes você pode executar o seguinte comando
+Para executar os testes você pode utilizar o seguinte comando
  `xcodebuild test -project Movies.xcworkspace -scheme Movies -destination 'platform=iOS,name=Development iPod touch'`
  
 ## Executar no emulador
